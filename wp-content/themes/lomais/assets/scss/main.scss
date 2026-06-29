@@ -1,0 +1,15 @@
+// Ficus - main stylesheet
+// Le variabili di brand vengono da theme.json via CSS custom properties WP.
+// Qui non si ri-dichiarano valori: si usano le vars generate da WP.
+
+@use 'reset';
+@use 'typography';
+@use 'layout';
+@use 'header';
+@use 'footer';
+
+// Block styles custom
+@use 'blocks/navigation';
+@use 'blocks/query';
+@use 'blocks/button';
+@use 'blocks/group';

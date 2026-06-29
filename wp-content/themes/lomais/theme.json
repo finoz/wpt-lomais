@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+
+  "settings": {
+    "color": {
+      "palette": [
+        { "slug": "primary",     "color": "#2D5016", "name": "Primary" },
+        { "slug": "secondary",   "color": "#7A9E4E", "name": "Secondary" },
+        { "slug": "accent",      "color": "#C8A95A", "name": "Accent" },
+        { "slug": "surface",     "color": "#F7F4EE", "name": "Surface" },
+        { "slug": "surface-alt", "color": "#EDE8DF", "name": "Surface Alt" },
+        { "slug": "text",        "color": "#1A1A1A", "name": "Text" },
+        { "slug": "text-light",  "color": "#5C5C5C", "name": "Text Light" },
+        { "slug": "white",       "color": "#FFFFFF", "name": "White" }
+      ]
+    },
+    "typography": {
+      "fontFamilies": [
+        {
+          "slug": "sans",
+          "name": "Open Sans",
+          "fontFamily": "'Open Sans', system-ui, sans-serif",
+          "fontFace": [
+            {
+              "fontFamily": "Open Sans",
+              "fontWeight": "300 700",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/OpenSans-VariableFont_wdth,wght.woff2"]
+            },
+            {
+              "fontFamily": "Open Sans",
+              "fontWeight": "300 700",
+              "fontStyle": "italic",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/OpenSans-Italic-VariableFont_wdth,wght.woff2"]
+            }
+          ]
+        },
+        {
+          "slug": "serif",
+          "name": "Clash Display",
+          "fontFamily": "'Clash Display', Georgia, serif",
+          "fontFace": [
+            {
+              "fontFamily": "Clash Display",
+              "fontWeight": "400 700",
+              "fontStyle": "normal",
+              "fontDisplay": "swap",
+              "src": ["file:./assets/fonts/ClashDisplay-Variable.woff2"]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
