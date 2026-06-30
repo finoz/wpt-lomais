@@ -1,42 +1,125 @@
-// Footer del sito
+// Footer lomais — verde con 3 colonne nav
+// Struttura in parts/footer.html
 
 .wp-block-template-part[class*="footer"] {
   background-color: var(--wp--preset--color--primary);
-  color: var(--wp--preset--color--surface);
-  margin-block-start: var(--wp--preset--spacing--8);
+  color: var(--wp--preset--color--white);
+  border-radius: var(--wp--custom--radius--md) var(--wp--custom--radius--md) 0 0;
+  overflow: hidden;
 }
 
 .site-footer__inner {
-  padding-block: var(--wp--preset--spacing--8);
+  padding-inline: 8.0rem;
+  padding-block: 4.0rem;
+  max-width: var(--wp--style--global--wide-size);
+  margin-inline: auto;
 }
 
-.site-footer__columns {
-  gap: var(--wp--preset--spacing--7);
-
-  h4 {
-    color: var(--wp--preset--color--white);
-    margin-block-end: var(--wp--preset--spacing--4);
-  }
-
-  p,
-  a {
-    color: var(--wp--preset--color--surface);
-    font-size: var(--wp--preset--font-size--sm);
-  }
-
-  a:hover {
-    color: var(--wp--preset--color--accent);
-  }
+// Riga superiore: logo + nav columns
+.site-footer__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8.0rem;
 }
 
-.site-footer__bottom {
-  border-top: 1px solid rgb(255 255 255 / 0.15);
-  padding-block-start: var(--wp--preset--spacing--5);
-  margin-block-start: var(--wp--preset--spacing--6);
+.site-footer__brand {
+  max-width: 48.0rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.0rem;
+
+  img {
+    height: 4.8rem;
+    width: auto;
+  }
 
   p {
+    font-family: var(--wp--preset--font-family--sans);
+    font-size: var(--wp--preset--font-size--base);
+    color: var(--wp--preset--color--white);
+    line-height: 1.5;
+    margin: 0;
+  }
+}
+
+// Nav columns raggruppate
+.site-footer__nav-columns {
+  display: flex;
+  gap: 8.0rem;
+  align-items: flex-start;
+}
+
+// Singola colonna nav
+.site-footer__nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  min-width: 12.0rem;
+
+  // Titolo colonna
+  .site-footer__nav-title {
+    font-family: var(--wp--preset--font-family--serif);
+    font-size: var(--wp--preset--font-size--base);
+    font-weight: 500;
+    color: var(--wp--preset--color--white);
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  // Lista link
+  .wp-block-navigation,
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.0rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .wp-block-navigation-item__content,
+  a,
+  li {
+    font-family: var(--wp--preset--font-family--sans);
+    font-size: var(--wp--preset--font-size--base);
+    color: rgb(255 255 255 / 0.8);
+    text-decoration: none;
+    transition: color var(--wp--custom--transition);
+
+    &:hover {
+      color: var(--wp--preset--color--white);
+    }
+  }
+}
+
+// Divider + copyright
+.site-footer__bottom {
+  border-top: 1px solid rgb(255 255 255 / 0.2);
+  padding-block-start: 2.4rem;
+  margin-block-start: 8.0rem;
+  text-align: center;
+
+  p {
+    font-family: var(--wp--preset--font-family--sans);
     font-size: var(--wp--preset--font-size--xs);
     color: rgb(255 255 255 / 0.6);
     margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer__inner {
+    padding-inline: 2.4rem;
+  }
+
+  .site-footer__top {
+    flex-direction: column;
+    gap: 4.0rem;
+  }
+
+  .site-footer__nav-columns {
+    flex-wrap: wrap;
+    gap: 4.0rem;
   }
 }

@@ -1,15 +1,14 @@
-// Group block - stili per le varianti registrate
+// Group block — varianti registrate in ficus/inc/block-styles.php
 
-// Variante card
+// Card generica (usata nella sezione feature)
 .wp-block-group.is-style-card {
   background-color: var(--wp--preset--color--white);
   border-radius: var(--wp--custom--radius--md);
-  box-shadow: var(--wp--preset--shadow--sm);
-  padding: var(--wp--preset--spacing--6);
+  padding: 4.0rem;
 }
 
-// Variante section - padding verticale generoso, sfondo alternativo
+// Section — sfondo alternativo, padding generoso
 .wp-block-group.is-style-section {
-  padding-block: var(--wp--preset--spacing--9);
-  background-color: var(--wp--preset--color--surface-alt);
+  padding-block: 8.0rem;
+  background-color: var(--wp--preset--color--surface);
 }

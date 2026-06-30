@@ -3,19 +3,59 @@
   "version": 3,
 
   "settings": {
-    "color": {
-      "palette": [
-        { "slug": "primary",     "color": "#2D5016", "name": "Primary" },
-        { "slug": "secondary",   "color": "#7A9E4E", "name": "Secondary" },
-        { "slug": "accent",      "color": "#C8A95A", "name": "Accent" },
-        { "slug": "surface",     "color": "#F7F4EE", "name": "Surface" },
-        { "slug": "surface-alt", "color": "#EDE8DF", "name": "Surface Alt" },
-        { "slug": "text",        "color": "#1A1A1A", "name": "Text" },
-        { "slug": "text-light",  "color": "#5C5C5C", "name": "Text Light" },
-        { "slug": "white",       "color": "#FFFFFF", "name": "White" }
+    "layout": {
+      "contentSize": "1280px",
+      "wideSize":    "1440px"
+    },
+
+    "spacing": {
+      "spacingSizes": [
+        { "slug": "xs",  "size": "1.0rem", "name": "XS"     },
+        { "slug": "sm",  "size": "1.6rem", "name": "Small"  },
+        { "slug": "md",  "size": "2.4rem", "name": "Medium" },
+        { "slug": "lg",  "size": "4.0rem", "name": "Large"  },
+        { "slug": "xl",  "size": "8.0rem", "name": "XL"     }
       ]
     },
+
+    "custom": {
+      "radius": {
+        "sm":   "0.8rem",
+        "md":   "1.6rem",
+        "full": "8.0rem"
+      },
+      "transition": "150ms ease"
+    },
+
+    "color": {
+      "palette": [
+        { "slug": "primary",     "color": "#1a6236", "name": "Verde Lomais" },
+        { "slug": "secondary",   "color": "#e5ce00", "name": "Giallo" },
+        { "slug": "accent",      "color": "#e5ce00", "name": "Accent" },
+        { "slug": "surface",     "color": "#f0f0f0", "name": "Light Gray" },
+        { "slug": "surface-alt", "color": "#e0e0e0", "name": "Surface Alt" },
+        { "slug": "text",        "color": "#000000", "name": "Black" },
+        { "slug": "text-light",  "color": "#555555", "name": "Medium Gray" },
+        { "slug": "white",       "color": "#ffffff", "name": "White" },
+        { "slug": "giallo-100",  "color": "#FCFAE5", "name": "Giallo 100" },
+        { "slug": "giallo-200",  "color": "#F2F1BF", "name": "Giallo 200" },
+        { "slug": "giallo-300",  "color": "#F7F0B2", "name": "Giallo 300" }
+      ]
+    },
+
     "typography": {
+      "customFontSize": false,
+      "fontSizes": [
+        { "slug": "xxs",  "size": "1.0rem", "name": "Nota"       },
+        { "slug": "xs",   "size": "1.4rem", "name": "Didascalia" },
+        { "slug": "sm",   "size": "1.6rem", "name": "Etichetta"  },
+        { "slug": "base", "size": "1.8rem", "name": "Corpo"      },
+        { "slug": "md",   "size": "2.0rem", "name": "Titolo S"   },
+        { "slug": "lg",   "size": "2.8rem", "name": "Titolo M"   },
+        { "slug": "xl",   "size": "3.6rem", "name": "Titolo L"   },
+        { "slug": "2xl",  "size": "4.4rem", "name": "Display"    },
+        { "slug": "3xl",  "size": "5.0rem", "name": "Headline"   }
+      ],
       "fontFamilies": [
         {
           "slug": "sans",

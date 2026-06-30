@@ -1,4 +1,5 @@
 .env
+.vite-dev
 
 # WordPress core (entra via Docker, non versionato)
 wp-admin/

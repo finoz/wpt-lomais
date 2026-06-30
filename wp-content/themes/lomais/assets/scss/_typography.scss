@@ -1,6 +1,60 @@
-// Tipografia
-// I valori vengono da theme.json via --wp--preset--font-*
-// Qui si definiscono solo regole strutturali e casi speciali
+// Tipografia lomais
+// Font: Clash Display (serif slug) per headings, Open Sans (sans slug) per body
+
+// ── Scala responsive — override WP custom properties via :root ─────────────────
+//
+// theme.json definisce i valori MOBILE (il default WP):
+//   md=2.0rem  lg=2.8rem  xl=3.6rem  2xl=4.4rem  3xl=5.0rem
+//
+// Qui sovrascriviamo le stesse variabili per desktop.
+// Tutti gli usi di var(--wp--preset--font-size--*) — sia nel nostro SCSS
+// che negli inline style generati dall'editor — beneficiano automaticamente
+// dell'override.
+//
+//  slug    mobile    desktop    nome editor
+//  xxs     1.0rem    1.0rem     Nota        (fisso)
+//  xs      1.4rem    1.4rem     Didascalia  (fisso)
+//  sm      1.6rem    1.6rem     Etichetta   (fisso)
+//  base    1.8rem    1.8rem     Corpo       (fisso)
+//  md      2.0rem    2.4rem     Titolo S
+//  lg      2.8rem    3.6rem     Titolo M
+//  xl      3.6rem    4.8rem     Titolo L
+//  2xl     4.4rem    6.4rem     Display
+//  3xl     5.0rem    8.0rem     Headline
+
+@media (min-width: 769px) {
+  :root {
+    --wp--preset--font-size--md:  2.4rem;
+    --wp--preset--font-size--lg:  3.6rem;
+    --wp--preset--font-size--xl:  4.8rem;
+    --wp--preset--font-size--2xl: 6.4rem;
+    --wp--preset--font-size--3xl: 8.0rem;
+  }
+}
+
+// ── Base ──────────────────────────────────────────────────────────────────────
+
+body {
+  font-family: var(--wp--preset--font-family--sans);
+  font-size: var(--wp--preset--font-size--base);
+  color: var(--wp--preset--color--text);
+  line-height: 1.5;
+}
+
+// Headings → Clash Display
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading {
+  font-family: var(--wp--preset--font-family--serif);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--wp--preset--color--text);
+}
+
+// Uppercase display headings (sezioni, card title, hero)
+.is-display-heading {
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
 
 // Link nel contenuto editoriale
 .entry-content,
@@ -12,20 +66,19 @@
     transition: color var(--wp--custom--transition);
 
     &:hover {
-      color: var(--wp--preset--color--secondary);
+      color: var(--wp--preset--color--text);
     }
   }
 }
 
-// Spaziature tra blocchi nel contenuto
+// Spaziatura verticale blocchi nel contenuto
 .wp-block-post-content {
   > * + * {
-    margin-block-start: var(--wp--preset--spacing--5);
+    margin-block-start: 2.4rem;
   }
 
   > h2,
-  > h3,
-  > h4 {
-    margin-block-start: var(--wp--preset--spacing--7);
+  > h3 {
+    margin-block-start: 4.0rem;
   }
 }

@@ -1,18 +1,16 @@
-// Header del sito
-// La struttura HTML è in parts/header.html
-// WP wrappa il template part in <header class="wp-block-template-part">
+// Header lomais
+// Struttura in parts/header.html
 
 .wp-block-template-part[class*="header"] {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: var(--wp--preset--color--white);
-  border-bottom: 1px solid var(--wp--preset--color--surface-alt);
 }
 
 .site-header__inner {
-  padding-inline: var(--wp--preset--spacing--6);
-  padding-block: var(--wp--preset--spacing--4);
+  padding-inline: 8.0rem;
+  padding-block: 2.4rem;
   max-width: var(--wp--style--global--wide-size);
   margin-inline: auto;
   align-items: center;
@@ -20,19 +18,25 @@
 
 .site-header__logo {
   flex-shrink: 0;
+
+  img {
+    height: 4.8rem;
+    width: auto;
+  }
 }
 
-// Navigation block - stili per il menu principale
+// Navigation principale
 .site-header__nav {
-  // Voci menu desktop
   .wp-block-navigation__container {
-    gap: var(--wp--preset--spacing--5);
+    gap: 3.3rem;
+    align-items: center;
   }
 
   .wp-block-navigation-item__content {
-    color: var(--wp--preset--color--text);
+    font-family: var(--wp--preset--font-family--serif);
     font-size: var(--wp--preset--font-size--base);
-    font-weight: 500;
+    font-weight: 400;
+    color: var(--wp--preset--color--text);
     text-decoration: none;
     padding: 0;
     transition: color var(--wp--custom--transition);
@@ -42,17 +46,15 @@
     }
   }
 
-  // Hamburger mobile - WP lo genera quando overlayMenu="mobile"
+  // Hamburger mobile
   .wp-block-navigation__responsive-container-open {
     color: var(--wp--preset--color--text);
     background: none;
     border: none;
     cursor: pointer;
-    padding: var(--wp--preset--spacing--2);
+    padding: 1.0rem;
 
-    svg {
-      display: block;
-    }
+    svg { display: block; }
   }
 
   // Overlay mobile
@@ -60,7 +62,19 @@
     background-color: var(--wp--preset--color--white);
 
     &.is-menu-open {
-      padding: var(--wp--preset--spacing--6);
+      padding: 4.0rem;
     }
+
+    // Voci menu mobile — font-size già responsivo via override WP vars
+    .wp-block-navigation-item__content {
+      font-size: var(--wp--preset--font-size--md);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header__inner {
+    padding-inline: 2.4rem;
+    padding-block: 1.6rem;
   }
 }
