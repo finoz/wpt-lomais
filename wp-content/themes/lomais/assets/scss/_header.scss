@@ -16,7 +16,8 @@
   align-items: center;
 }
 
-.site-header__logo {
+.site-header__logo,
+.site-header__logo-link {
   flex-shrink: 0;
 
   img {
