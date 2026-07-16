@@ -50,6 +50,30 @@ npm run build
 Font: **Clash Display** (headings, slug `serif`) + **Open Sans** (body, slug `sans`)  
 File in `wp-content/themes/lomais/assets/fonts/`
 
+## Logo
+
+Il logo di default è in `wp-content/themes/lomais/assets/images/logo.png`.
+
+Il parent theme (ficus) carica automaticamente questo file come logo fallback quando nessun logo è impostato in admin. Non serve PHP nel child theme.
+
+Per sostituire il logo: basta rimpiazzare il file. Il logo caricato da admin (Impostazioni > Generali > Logo sito) ha sempre la precedenza sul file di default.
+
+Formati supportati (in ordine di priorità): `logo.png`, `logo.svg`, `logo.webp`, `logo.jpg`.
+
+Se hai bisogno di alt text personalizzato o dimensioni esplicite, puoi sovrascrivere il filtro in `functions.php`:
+
+```php
+add_filter( 'ficus_default_logo_html', function (): string {
+    return ficus_logo_img(
+        get_stylesheet_directory_uri() . '/assets/images/logo.png',
+        'Agricola 2000',
+        200, 40
+    );
+}, 20 );
+```
+
+---
+
 ## Aggiornamenti automatici (GitHub Updater)
 
 Il tema si aggiorna da GitHub tramite `Ficus_GitHub_Updater`.  

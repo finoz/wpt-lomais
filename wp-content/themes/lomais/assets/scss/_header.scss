@@ -67,7 +67,7 @@
 
     // Voci menu mobile — font-size già responsivo via override WP vars
     .wp-block-navigation-item__content {
-      font-size: var(--wp--preset--font-size--md);
+      font-size: var(--wp--preset--font-size--base);
     }
   }
 }

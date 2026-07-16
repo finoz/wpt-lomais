@@ -48,6 +48,13 @@ h1, h2, h3, h4, h5, h6,
   font-weight: 500;
   line-height: 1.1;
   color: var(--wp--preset--color--text);
+
+  &:is(h1) { font-size: var(--wp--preset--font-size--3xl); }
+  &:is(h2) { font-size: var(--wp--preset--font-size--2xl); }
+  &:is(h3) { font-size: var(--wp--preset--font-size--xl);  }
+  &:is(h4) { font-size: var(--wp--preset--font-size--lg);  }
+  &:is(h5) { font-size: var(--wp--preset--font-size--md);  }
+  &:is(h6) { font-size: var(--wp--preset--font-size--sm);  }
 }
 
 // Uppercase display headings (sezioni, card title, hero)
