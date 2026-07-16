@@ -24,8 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initNavToggle(): void {
   const btn = document.querySelector<HTMLButtonElement>('.site-nav__toggle')
-  // add mini span in button
-  btn?.appendChild(document.createElement('span'))
   if (!btn) return
 
   const nav  = btn.closest<HTMLElement>('.site-header__nav')

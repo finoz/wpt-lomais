@@ -1,161 +1,151 @@
 // Header lomais
-// Struttura in parts/header.html + parts/navigation.php
+// Struttura in parts/header.html + parts/navigation.php (blocco ficus/primary-nav)
 
 header.wp-block-template-part {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-header);
-  background-color: var(--wp--preset--color--white);
+	position: sticky;
+	top: 0;
+	z-index: var(--z-header);
+	background-color: var(--wp--preset--color--white);
 }
 
 .site-header__inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: 8.0rem;
-  padding-block: 2.4rem;
-  max-width: var(--wp--style--global--wide-size);
-  margin-inline: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 8.0rem;
+	padding-block: 2.4rem;
+	max-width: var(--wp--style--global--wide-size);
+	margin-inline: auto;
+
+	@media (max-width: 768px) {
+		padding-inline: 2.4rem;
+		padding-block: 1.6rem;
+	}
 }
 
 .site-header__logo,
 .site-header__logo-link {
-  flex-shrink: 0;
+	flex-shrink: 0;
 
-  img {
-    height: 4.8rem;
-    width: auto;
-  }
+	img {
+		height: 4.8rem;
+		width: auto;
+	}
 }
 
 // ── Navigazione principale ────────────────────────────────────────────────────
-// Markup: nav.site-header__nav > button.site-nav__toggle + ul.site-nav__menu > li > a
 
 .site-header__nav {
 
-  // Lista voci: flex row su desktop, no list-style
-  .site-nav__menu {
-    display: flex;
-    flex-direction: row;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 3.3rem;
-    align-items: center;
+	// Lista voci
+	.site-nav__menu {
+		display: none; // mobile: nascosto di default
 
-    li { list-style: none; }
-  }
+		@media (min-width: 769px) {
+			display: flex;
+			flex-direction: row;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			gap: 3.3rem;
+			align-items: center;
+		}
 
-  // Singola voce
-  a {
-    text-decoration: none;
-    &:hover {
-      color: var(--wp--preset--color--primary);
-    }
-  }
+		li {
+			list-style: none;
+		}
+	}
 
-  // === Bottone hamburger / toggle ===
-  // Nascosto su desktop, visibile su mobile.
-  // Icona generata da ::before e ::after.
-  .site-nav__toggle {
-    display: none;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    width: 4.8rem;
-    height: 4.8rem;
-    padding: 0;
-    background: none;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    z-index: var(--z-menutoggle);
+	// Voci singole
+	a {
+		text-decoration: none;
 
-    span,
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      translate: -50% 0;
-      width: 1.6rem;
-      height: 2px;
-      background: currentColor;
-      transform-origin: center;
-      border-radius: 1px;
-      transition: transform 0.25s ease;
-    }
-    // add central span
-    span {
-      left: 50%;
-      top: 50%;
-      translate: -50% -50%;
-    }
-    &::before { top: calc(50% - 0.8rem); }
-    &::after  { bottom: calc(50% - 0.8rem); }
-  }
+		&:hover {
+			color: var(--wp--preset--color--primary);
+		}
+	}
 
-  // Stato aperto: linee diventano X
-  &.nav-is-open {
+	// Bottone hamburger / toggle — nascosto su desktop
+	.site-nav__toggle {
+		display: none;
 
-    color: var(--wp--preset--color--white);
-    .site-nav__toggle {
-      color: var(--wp--preset--color--white);
-      span {
-        width: 100%;
-        height: 100%;
-        opacity: 0.3;
-        border-radius: 50%;
-      }
-      &::before { transform: translateY(0.7rem) rotate(45deg); }
-      &::after  { transform: translateY(-0.7rem) rotate(-45deg); }
-    }
+		@media (max-width: 768px) {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-shrink: 0;
+			width: 4.8rem;
+			height: 4.8rem;
+			padding: 0;
+			background: none;
+			border: none;
+			cursor: pointer;
+			position: relative;
+			z-index: var(--z-menutoggle);
+		}
 
-    .site-nav__menu {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 2.4rem;
-      position: fixed;
-      inset: 0;
-      background: var(--wp--preset--color--primary);
-      padding: 8.0rem 2.4rem 4.0rem;
-      z-index: var(--z-overlay);
-      overflow-y: auto;
+		span,
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 50%;
+			translate: -50% 0;
+			width: 1.6rem;
+			height: 2px;
+			background: currentColor;
+			transform-origin: center;
+			border-radius: 1px;
+			transition: transform 0.25s ease;
+		}
 
-      a {
-        font-weight: 700;
-        font-size: var(--wp--preset--font-size--lg);
-      }
-    }
-  }
-}
+		span {
+			top: 50%;
+			translate: -50% -50%;
+		}
 
-// ── Desktop ───────────────────────────────────────────────────────────────────
+		&::before { top: calc(50% - 0.8rem); }
+		&::after  { bottom: calc(50% - 0.8rem); }
+	}
 
-@media (min-width: 769px) {
-  .site-header__nav .site-nav__menu {
-    display: flex;
-  }
-}
+	// Stato aperto
+	&.nav-is-open {
+		color: var(--wp--preset--color--white);
 
-// ── Mobile ────────────────────────────────────────────────────────────────────
+		.site-nav__toggle {
+			color: var(--wp--preset--color--white);
 
-@media (max-width: 768px) {
-  .site-header__inner {
-    padding-inline: 2.4rem;
-    padding-block: 1.6rem;
-  }
+			span {
+				width: 100%;
+				height: 100%;
+				opacity: 0.3;
+				border-radius: 50%;
+			}
 
-  .site-header__nav {
-    // Hamburger: visibile su mobile
-    .site-nav__toggle {
-      display: flex;
-    }
+			&::before { transform: translateY(0.7rem) rotate(45deg); }
+			&::after  { transform: translateY(-0.7rem) rotate(-45deg); }
+		}
 
-    // Menu: nascosto di default su mobile
-    .site-nav__menu {
-      display: none;
-    }
-  }
+		.site-nav__menu {
+			@media (max-width: 768px) {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 2.4rem;
+				list-style: none;
+				margin: 0;
+				padding: 8.0rem 2.4rem 4.0rem;
+				position: fixed;
+				inset: 0;
+				background: var(--wp--preset--color--primary);
+				z-index: var(--z-overlay);
+				overflow-y: auto;
+
+				a {
+					font-weight: 700;
+					font-size: var(--wp--preset--font-size--lg);
+				}
+			}
+		}
+	}
 }
