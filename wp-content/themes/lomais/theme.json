@@ -53,8 +53,8 @@
         { "slug": "md",   "size": "2.0rem", "name": "Titolo S"   },
         { "slug": "lg",   "size": "2.8rem", "name": "Titolo M"   },
         { "slug": "xl",   "size": "3.6rem", "name": "Titolo L"   },
-        { "slug": "2xl",  "size": "4.4rem", "name": "Display"    },
-        { "slug": "3xl",  "size": "5.0rem", "name": "Headline"   }
+        { "slug": "xxl",  "size": "4.4rem", "name": "Display"    },
+        { "slug": "xxxl",  "size": "5.0rem", "name": "Headline"   }
       ],
       "fontFamilies": [
         {

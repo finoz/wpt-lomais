@@ -14,12 +14,6 @@
   display: inline-flex;
   align-items: center;
   border: none;
-  transition:
-    background-color var(--wp--custom--transition),
-    color            var(--wp--custom--transition),
-    border-color     var(--wp--custom--transition),
-    transform        var(--wp--custom--transition),
-    box-shadow       var(--wp--custom--transition);
 }
 
 // ── Fill (default) — verde pieno ──────────────────────────────────────────────
@@ -80,13 +74,11 @@
   &::before {
     content: "– ";
     display: inline-block;
-    transition: transform var(--wp--custom--transition);
   }
 
   &::after {
     content: " –";
     display: inline-block;
-    transition: transform var(--wp--custom--transition);
   }
 
   &:hover {

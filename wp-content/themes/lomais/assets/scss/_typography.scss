@@ -3,8 +3,7 @@
 
 // ── Scala responsive — override WP custom properties via :root ─────────────────
 //
-// theme.json definisce i valori MOBILE (il default WP):
-//   md=2.0rem  lg=2.8rem  xl=3.6rem  2xl=4.4rem  3xl=5.0rem
+// theme.json definisce i valori MOBILE (il default WP)
 //
 // Qui sovrascriviamo le stesse variabili per desktop.
 // Tutti gli usi di var(--wp--preset--font-size--*) — sia nel nostro SCSS
@@ -19,16 +18,16 @@
 //  md      2.0rem    2.4rem     Titolo S
 //  lg      2.8rem    3.6rem     Titolo M
 //  xl      3.6rem    4.8rem     Titolo L
-//  2xl     4.4rem    6.4rem     Display
-//  3xl     5.0rem    8.0rem     Headline
+//  xxl     4.4rem    6.4rem     Display
+//  xxxl    5.0rem    8.0rem     Headline
 
 @media (min-width: 769px) {
   :root {
     --wp--preset--font-size--md:  2.4rem;
     --wp--preset--font-size--lg:  3.6rem;
     --wp--preset--font-size--xl:  4.8rem;
-    --wp--preset--font-size--2xl: 6.4rem;
-    --wp--preset--font-size--3xl: 8.0rem;
+    --wp--preset--font-size--xxl: 6.4rem;
+    --wp--preset--font-size--xxxl: 8.0rem;
   }
 }
 
@@ -41,26 +40,24 @@ body {
   line-height: 1.5;
 }
 
+// default a behavior
+a {
+  color: inherit;
+}
+
 // Headings → Clash Display
 h1, h2, h3, h4, h5, h6,
 .wp-block-heading {
   font-family: var(--wp--preset--font-family--serif);
   font-weight: 500;
   line-height: 1.1;
-  color: var(--wp--preset--color--text);
 
-  &:is(h1) { font-size: var(--wp--preset--font-size--3xl); }
-  &:is(h2) { font-size: var(--wp--preset--font-size--2xl); }
+  &:is(h1) { font-size: var(--wp--preset--font-size--xxxl); }
+  &:is(h2) { font-size: var(--wp--preset--font-size--xxl); }
   &:is(h3) { font-size: var(--wp--preset--font-size--xl);  }
   &:is(h4) { font-size: var(--wp--preset--font-size--lg);  }
   &:is(h5) { font-size: var(--wp--preset--font-size--md);  }
   &:is(h6) { font-size: var(--wp--preset--font-size--sm);  }
-}
-
-// Uppercase display headings (sezioni, card title, hero)
-.is-display-heading {
-  text-transform: uppercase;
-  letter-spacing: 0;
 }
 
 // Link nel contenuto editoriale
@@ -70,7 +67,6 @@ h1, h2, h3, h4, h5, h6,
     color: var(--wp--preset--color--primary);
     text-decoration: underline;
     text-underline-offset: 3px;
-    transition: color var(--wp--custom--transition);
 
     &:hover {
       color: var(--wp--preset--color--text);

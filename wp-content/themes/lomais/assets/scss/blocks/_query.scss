@@ -61,7 +61,6 @@
       color: var(--wp--preset--color--text);
       text-decoration: none;
       line-height: 1.4;
-      transition: background-color var(--wp--custom--transition), color var(--wp--custom--transition);
 
       &:hover {
         background-color: var(--wp--preset--color--text);
@@ -81,7 +80,6 @@
     a {
       color: var(--wp--preset--color--text);
       text-decoration: none;
-      transition: color var(--wp--custom--transition);
 
       &:hover {
         color: var(--wp--preset--color--primary);
@@ -125,9 +123,6 @@
     font-size: var(--wp--preset--font-size--sm);
     font-weight: 500;
     text-decoration: none;
-    color: var(--wp--preset--color--text);
-    border: 1px solid var(--wp--preset--color--surface-alt);
-    transition: all var(--wp--custom--transition);
 
     &:hover,
     &.current {

@@ -1,7 +1,21 @@
 // Layout globale - sezioni e struttura pagina
 
+// ── Z-index scale ─────────────────────────────────────────────────────────────
+// Scala intera, crescente per unità. Aggiungere qui ogni nuovo livello.
+
+:root {
+  --z-overlay: 2;   // overlay mobile nav
+  --z-header:  3;   // header sticky
+  --z-menutoggle: 4; // toggle mobile nav
+  --z-modal: 5;     // modali, popup, toast ecc.
+  --z-tooltip: 6;   // tooltip, ecc.
+}
+
 // Rimuove gap default tra blocchi a livello root
 .wp-site-blocks {
+   display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
   > * + * {
     margin-block-start: 0;
   }
@@ -9,7 +23,56 @@
 
 .site-main {
   min-height: 60vh;
+  flex: 1;
 }
+
+// ── General ──────────────────────────────────────────────────────────────────
+
+// flow: block layout, default - non fa nulla di speciale
+.is-layout-flow {
+  // vuoto intenzionalmente
+}
+
+// flex: già stai riscrivendo
+.is-layout-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+}
+
+// constrained: i figli hanno max-width content-size e sono centrati
+.is-layout-constrained {
+  > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
+    max-width: var(--wp--style--global--content-size);
+    margin-inline: auto;
+  }
+
+  > .alignwide {
+    max-width: var(--wp--style--global--wide-size);
+    margin-inline: auto;
+  }
+}
+
+// grid: usato dal query block (post-template)
+.is-layout-grid {
+  display: grid;
+  gap: 2.4rem;
+}
+
+.alignleft  {
+  margin-inline-end: auto;
+  align-self: flex-start;
+}
+.alignright {
+  margin-inline-start: auto;
+  align-self: flex-end;
+}
+.aligncenter { margin-inline: auto; }
+
+// Le due align che contano davvero in FSE
+.alignwide { max-width: var(--wp--style--global--wide-size); }
+.alignfull { max-width: none; width: 100%; }
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
 
