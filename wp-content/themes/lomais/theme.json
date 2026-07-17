@@ -40,6 +40,23 @@
         { "slug": "giallo-100",  "color": "#FCFAE5", "name": "Giallo 100" },
         { "slug": "giallo-200",  "color": "#F2F1BF", "name": "Giallo 200" },
         { "slug": "giallo-300",  "color": "#F7F0B2", "name": "Giallo 300" }
+      ],
+      "duotone": [
+        {
+          "slug": "bw",
+          "name": "Bianco e Nero",
+          "colors": [ "#000000", "#ffffff" ]
+        },
+        {
+          "slug": "verde",
+          "name": "Verde",
+          "colors": [ "#0d3120", "#b8ddc8" ]
+        },
+        {
+          "slug": "giallo",
+          "name": "Giallo",
+          "colors": [ "#5c4400", "#F7F0B2" ]
+        }
       ]
     },
 
