@@ -51,19 +51,19 @@
     .wp-block-post-terms__item,
     a {
       display: inline-block;
-      border: 1px solid var(--wp--preset--color--text);
+      border: 1px solid var(--wp--preset--color--ink);
       padding: 0.6rem 0.8rem;
       font-family: var(--wp--preset--font-family--display);
       font-size: var(--wp--preset--font-size--xs);
       font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.02em;
-      color: var(--wp--preset--color--text);
+      color: var(--wp--preset--color--ink);
       text-decoration: none;
       line-height: 1.4;
 
       &:hover {
-        background-color: var(--wp--preset--color--text);
+        background-color: var(--wp--preset--color--ink);
         color: var(--wp--preset--color--white);
       }
     }
@@ -78,7 +78,7 @@
     margin: 0;
 
     a {
-      color: var(--wp--preset--color--text);
+      color: var(--wp--preset--color--ink);
       text-decoration: none;
 
       &:hover {
@@ -94,7 +94,7 @@
     p {
       font-family: var(--wp--preset--font-family--sans);
       font-size: var(--wp--preset--font-size--base);
-      color: var(--wp--preset--color--text);
+      color: var(--wp--preset--color--ink);
       line-height: 1.4;
       margin: 0;
     }

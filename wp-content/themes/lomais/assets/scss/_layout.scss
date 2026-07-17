@@ -36,6 +36,20 @@
   }
 }
 
+// admin setup - forziamo due robe per poter lavorare adeguatamente in editor
+.editor-styles-wrapper {
+	.editor-visual-editor__post-title-wrapper {
+		display: block;
+		background: #f0f0f0;
+		border-bottom: 1px dotted #ccc;
+		padding: 1em;
+		margin: 0 0 2rem 0;
+	}
+	.is-root-container {
+		display: grid !important;
+	}
+}
+
 // Wrapper "trasparenti" — nessun padding né max-width proprio, passano il layout ai figli
 .site-main,
 .post-single__header,
@@ -55,7 +69,8 @@
 //   content  → var(--wp--style--global--content-size)
 //   reading  → var(--wp--custom--reading-size)   [definito in theme.json settings.custom]
 
-.wp-block-post-content {
+.wp-block-post-content,
+.is-root-container {
 	display: grid;
 	grid-template-columns:
 		[full-start]
@@ -195,13 +210,13 @@
     font-size: var(--wp--preset--font-size--lg);
     font-weight: 500;
     text-transform: uppercase;
-    color: var(--wp--preset--color--text);
+    color: var(--wp--preset--color--ink);
     margin: 0;
   }
 
   .wp-block-paragraph {
     font-size: var(--wp--preset--font-size--base);
-    color: var(--wp--preset--color--text);
+    color: var(--wp--preset--color--ink);
     margin: 0;
   }
 }
@@ -218,7 +233,7 @@
     font-size: var(--wp--preset--font-size--2xl);
     font-weight: 500;
     text-transform: uppercase;
-    color: var(--wp--preset--color--text);
+    color: var(--wp--preset--color--ink);
     margin-block-end: 0;
   }
 
@@ -239,7 +254,7 @@
       text-transform: uppercase;
       letter-spacing: 0.08em;
       text-align: center;
-      color: var(--wp--preset--color--text);
+      color: var(--wp--preset--color--ink);
       text-decoration: none;
 
       a {
@@ -271,7 +286,7 @@
 
   .psr-caption {
     font-size: var(--wp--preset--font-size--xs);
-    color: var(--wp--preset--color--text);
+    color: var(--wp--preset--color--ink);
     line-height: 1.5;
     margin-block-start: 2.4rem;
 
