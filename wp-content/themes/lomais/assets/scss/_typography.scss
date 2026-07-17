@@ -73,15 +73,3 @@ h1, h2, h3, h4, h5, h6,
     }
   }
 }
-
-// Spaziatura verticale blocchi nel contenuto
-.wp-block-post-content {
-  > * + * {
-    margin-block-start: 2.4rem;
-  }
-
-  > h2,
-  > h3 {
-    margin-block-start: 4.0rem;
-  }
-}

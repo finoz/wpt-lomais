@@ -24,6 +24,20 @@
 	--grid-reading: var(--wp--custom--reading-size, 720px);
 	--grid-content: var(--wp--style--global--content-size, 1280px);
 	--grid-wide:    var(--wp--style--global--wide-size, 1440px);
+
+	// Scala di spaziatura — fluid, sovrascrive i valori fissi generati da WP.
+	// theme.json definisce i valori desktop (massimi del clamp) come riferimento
+	// per l'editor; qui li rendiamo fluid per il frontend.
+	// Alias corti --space-* per uso nel CSS, puntano alle stesse variabili WP.
+	--wp--preset--spacing--s:  clamp(1.6rem, 2vw,   2.4rem);
+	--wp--preset--spacing--m:  clamp(2.4rem, 3.5vw, 4.0rem);
+	--wp--preset--spacing--l:  clamp(4.0rem, 5.5vw, 6.4rem);
+	--wp--preset--spacing--xl: clamp(6.4rem, 8vw,   9.6rem);
+
+	--space-s:  var(--wp--preset--spacing--s);
+	--space-m:  var(--wp--preset--spacing--m);
+	--space-l:  var(--wp--preset--spacing--l);
+	--space-xl: var(--wp--preset--spacing--xl);
 }
 
 // Rimuove gap default tra blocchi a livello root
@@ -109,6 +123,44 @@
 	}
 }
 
+// ── Spaziatura verticale tra blocchi ─────────────────────────────────────────
+// Owl selector: margine solo tra elementi adiacenti, non prima del primo.
+// Specificità crescente: il selettore più specifico sovrascrive il default.
+
+.wp-block-post-content {
+
+	// Default tra blocchi generici
+	> * + * {
+		margin-block-start: var(--space-m);
+	}
+
+	// Stacca più generosamente prima di un heading (nuova sezione)
+	> * + :is(h2, h3, h4) {
+		margin-block-start: var(--space-l);
+	}
+
+	// Heading consecutivi e heading → primo blocco: spazio ridotto
+	> :is(h1, h2, h3, h4, h5, h6) + *,
+	> :is(h1, h2, h3, h4, h5, h6) + :is(h2, h3, h4, h5, h6) {
+		margin-block-start: var(--space-s);
+	}
+
+	// Full-bleed: spaziatura generosa sopra e sotto
+	> .alignfull {
+		margin-block: var(--space-xl);
+	}
+
+	// Due full-bleed consecutivi: nessun gap doppio
+	> .alignfull + .alignfull {
+		margin-block-start: 0;
+	}
+
+	// Primo figlio: nessun margine sopra
+	> *:first-child {
+		margin-block-start: 0;
+	}
+}
+
 // ── General ──────────────────────────────────────────────────────────────────
 
 // flow: block layout, default - non fa nulla di speciale
@@ -156,6 +208,9 @@
 // Le due align che contano davvero in FSE
 .alignwide { max-width: var(--wp--style--global--wide-size); }
 .alignfull { max-width: none; width: 100%; }
+
+.has-text-align-right { text-align: right; }
+.has-text-align-center { text-align: center; }
 
 // ── Hero ─────────────────────────────────────────────────────────────────────
 

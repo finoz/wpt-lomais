@@ -1,0 +1,7 @@
+.wp-block-cover {
+	padding: var(--space-m);
+	border-radius: var(--wp--custom--radius--md);
+	&.alignfull {
+		border-radius: 0;
+	}
+}
