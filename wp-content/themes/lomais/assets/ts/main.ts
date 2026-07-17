@@ -4,10 +4,12 @@
  */
 
 import '../scss/main.scss'
+import { initGalleries } from './components/gallery'
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavToggle()
   initScrollHeader()
+  initGalleries()
 })
 
 // ── Navigation mobile toggle ──────────────────────────────────────────────────
