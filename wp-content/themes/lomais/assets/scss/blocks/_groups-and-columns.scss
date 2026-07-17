@@ -1,5 +1,21 @@
-// Group block — varianti registrate in ficus/inc/block-styles.php
+.wp-block-group,
+.wp-block-column {
+	&.has-background {
+		padding: 3.2rem;
+		border-radius: var(--wp--custom--radius--md);
+	}
+}
 
+.wp-block-columns {
+	@media (min-width: 768px) {
+		> * {
+			flex: 1 1 0%;
+		}
+	}
+}
+
+
+// Group block — varianti registrate in ficus/inc/block-styles.php
 // Card generica (usata nella sezione feature)
 .wp-block-group.is-style-card {
   background-color: var(--wp--preset--color--white);

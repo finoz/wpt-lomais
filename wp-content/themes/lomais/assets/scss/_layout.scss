@@ -4,11 +4,26 @@
 // Scala intera, crescente per unità. Aggiungere qui ogni nuovo livello.
 
 :root {
-  --z-overlay: 2;   // overlay mobile nav
-  --z-header:  3;   // header sticky
-  --z-menutoggle: 4; // toggle mobile nav
-  --z-modal: 5;     // modali, popup, toast ecc.
-  --z-tooltip: 6;   // tooltip, ecc.
+	// Z-index
+	--z-overlay:    2;  // overlay mobile nav
+	--z-header:     3;  // header sticky
+	--z-menutoggle: 4;  // toggle mobile nav
+	--z-modal:      5;  // modali, popup, toast
+	--z-tooltip:    6;  // tooltip
+
+	// Padding laterale layout — usato da header e grid contenuto
+	--site-padding: 8.0rem;
+
+	@media (max-width: 768px) {
+		--site-padding: 2.4rem;
+	}
+
+	// Alias variabili grid con fallback hardcoded
+	// Le variabili --wp--* vengono generate da WP nel <head>;
+	// il fallback garantisce che il grid funzioni anche se non disponibili.
+	--grid-reading: var(--wp--custom--reading-size, 720px);
+	--grid-content: var(--wp--style--global--content-size, 1280px);
+	--grid-wide:    var(--wp--style--global--wide-size, 1440px);
 }
 
 // Rimuove gap default tra blocchi a livello root
@@ -21,9 +36,62 @@
   }
 }
 
+// Wrapper "trasparenti" — nessun padding né max-width proprio, passano il layout ai figli
+.site-main,
+.post-single__header,
+.post-navigation {
+	width: 100%;
+}
+
 .site-main {
-  min-height: 60vh;
-  flex: 1;
+	flex: 1; // cresce per spingere il footer in fondo
+}
+
+// ── Grid contenuto ──────────────────────────────────────────────────────────
+// Applicato a wp:post-content (div.wp-block-post-content).
+// 4 livelli di larghezza, simmetrici:
+//   full     → da bordo a bordo, copre anche i padding esterni
+//   wide     → var(--wp--style--global--wide-size)
+//   content  → var(--wp--style--global--content-size)
+//   reading  → var(--wp--custom--reading-size)   [definito in theme.json settings.custom]
+
+.wp-block-post-content {
+	display: grid;
+	grid-template-columns:
+		[full-start]
+		minmax(var(--site-padding), 1fr)
+		[wide-start]
+		minmax(0px, calc((var(--grid-wide) - var(--grid-content)) / 2))
+		[content-start]
+		minmax(0px, calc((var(--grid-content) - var(--grid-reading)) / 2))
+		[reading-start]
+		minmax(0px, var(--grid-reading))
+		[reading-end]
+		minmax(0px, calc((var(--grid-content) - var(--grid-reading)) / 2))
+		[content-end]
+		minmax(0px, calc((var(--grid-wide) - var(--grid-content)) / 2))
+		[wide-end]
+		minmax(var(--site-padding), 1fr)
+		[full-end];
+
+	// Default: larghezza content
+	> * {
+		grid-column: content-start / content-end;
+	}
+
+	// Blocchi allargati
+	> .alignwide {
+		grid-column: wide-start / wide-end;
+	}
+
+	> .alignfull {
+		grid-column: full-start / full-end;
+	}
+
+	// Larghezza reading — stile "Reading" registrato via register_block_style
+	> .is-style-reading-width {
+		grid-column: reading-start / reading-end;
+	}
 }
 
 // ── General ──────────────────────────────────────────────────────────────────
@@ -42,7 +110,7 @@
 }
 
 // constrained: i figli hanno max-width content-size e sono centrati
-.is-layout-constrained {
+/* .is-layout-constrained {
   > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
     max-width: var(--wp--style--global--content-size);
     margin-inline: auto;
@@ -52,7 +120,7 @@
     max-width: var(--wp--style--global--wide-size);
     margin-inline: auto;
   }
-}
+} */
 
 // grid: usato dal query block (post-template)
 .is-layout-grid {
@@ -88,7 +156,7 @@
 
   // Headline hero — responsiva via override --wp--preset--font-size--xl
   .wp-block-heading {
-    font-family: var(--wp--preset--font-family--serif);
+    font-family: var(--wp--preset--font-family--display);
     font-size: var(--wp--preset--font-size--xl);
     font-weight: 400;
     color: var(--wp--preset--color--white);
@@ -123,7 +191,7 @@
   justify-content: space-between;
 
   .wp-block-heading {
-    font-family: var(--wp--preset--font-family--serif);
+    font-family: var(--wp--preset--font-family--display);
     font-size: var(--wp--preset--font-size--lg);
     font-weight: 500;
     text-transform: uppercase;
@@ -146,7 +214,7 @@
 
   // Titolo sezione — responsivo via override --wp--preset--font-size--2xl
   > .wp-block-heading {
-    font-family: var(--wp--preset--font-family--serif);
+    font-family: var(--wp--preset--font-family--display);
     font-size: var(--wp--preset--font-size--2xl);
     font-weight: 500;
     text-transform: uppercase;
@@ -166,7 +234,7 @@
     }
 
     .leggi-tutto {
-      font-family: var(--wp--preset--font-family--serif);
+      font-family: var(--wp--preset--font-family--display);
       font-size: var(--wp--preset--font-size--sm);
       text-transform: uppercase;
       letter-spacing: 0.08em;

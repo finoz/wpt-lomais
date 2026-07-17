@@ -19,6 +19,7 @@
     },
 
     "custom": {
+      "reading-size": "720px",
       "radius": {
         "sm":   "0.8rem",
         "md":   "1.6rem",
@@ -79,9 +80,9 @@
           ]
         },
         {
-          "slug": "serif",
+          "slug": "display",
           "name": "Clash Display",
-          "fontFamily": "'Clash Display', Georgia, serif",
+          "fontFamily": "'Clash Display', system-ui, -apple-system, sans-serif",
           "fontFace": [
             {
               "fontFamily": "Clash Display",

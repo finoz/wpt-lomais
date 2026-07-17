@@ -12,13 +12,12 @@ header.wp-block-template-part {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-inline: 8.0rem;
+	padding-inline: var(--site-padding);
 	padding-block: 2.4rem;
 	max-width: var(--wp--style--global--wide-size);
 	margin-inline: auto;
 
 	@media (max-width: 768px) {
-		padding-inline: 2.4rem;
 		padding-block: 1.6rem;
 	}
 }
