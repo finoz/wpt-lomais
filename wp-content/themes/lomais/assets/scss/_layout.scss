@@ -105,21 +105,27 @@
 
 	// Default: larghezza content
 	> * {
-		grid-column: content-start / content-end;
+		grid-column: wide-start / wide-end;
+		@media (min-width: 768px) {
+			grid-column: content-start / content-end;
+		}
 	}
-
+	
 	// Blocchi allargati
 	> .alignwide {
 		grid-column: wide-start / wide-end;
 	}
-
+	
 	> .alignfull {
 		grid-column: full-start / full-end;
 	}
-
+	
 	// Larghezza reading — stile "Reading" registrato via register_block_style
 	> .is-style-reading-width {
-		grid-column: reading-start / reading-end;
+		grid-column: wide-start / wide-end;
+		@media (min-width: 768px) {
+			grid-column: reading-start / reading-end;
+		}
 	}
 }
 
@@ -170,24 +176,12 @@
 
 // flex: già stai riscrivendo
 .is-layout-flex {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2.4rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 2.4rem;
+	margin-inline: auto; // centratura default
 }
-
-// constrained: i figli hanno max-width content-size e sono centrati
-/* .is-layout-constrained {
-  > :not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright) {
-    max-width: var(--wp--style--global--content-size);
-    margin-inline: auto;
-  }
-
-  > .alignwide {
-    max-width: var(--wp--style--global--wide-size);
-    margin-inline: auto;
-  }
-} */
 
 // grid: usato dal query block (post-template)
 .is-layout-grid {
@@ -206,6 +200,7 @@
 .aligncenter { margin-inline: auto; }
 
 // Le due align che contano davvero in FSE
+.is-style-default { max-width: var(--wp--style--global--content-size); }
 .alignwide { max-width: var(--wp--style--global--wide-size); }
 .alignfull { max-width: none; width: 100%; }
 
