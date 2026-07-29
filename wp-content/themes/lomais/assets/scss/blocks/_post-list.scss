@@ -37,10 +37,29 @@
 }
 
 
+// ── pattern ──────────────────────────────────────────────────────────────
+
+.posts-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-s);
+	align-items: start;
+	>.wp-block-heading {
+		line-height: 1;
+		text-transform: uppercase;
+	}
+	>.wp-block-buttons {
+		.is-style-text-link{
+			.wp-block-button__link {
+				font-size: var(--wp--preset--font-size--xs);
+			}
+		}
+	}
+}
+
 // ── Griglia card ──────────────────────────────────────────────────────────────
 
 .posts-grid {
-
 	// wp:post-template genera una <ul> con is-layout-grid
 	// Sovrascriviamo il grid di WP con il nostro a 3 colonne responsive.
 	.wp-block-post-template {

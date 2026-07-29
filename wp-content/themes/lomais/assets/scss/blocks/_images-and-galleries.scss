@@ -32,7 +32,8 @@
 
 .wp-block-gallery {
 	position: relative;
-	margin: 0;
+	margin-bottom: 0;
+	margin-inline: 0;
 	.gallery-carousel__inner {
 		position: static;
 		width: 100%;

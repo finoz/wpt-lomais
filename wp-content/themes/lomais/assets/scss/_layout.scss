@@ -141,7 +141,7 @@
 	}
 
 	// Stacca più generosamente prima di un heading (nuova sezione)
-	> * + :is(h2, h3, h4) {
+	> * + :is(h2, h3) {
 		margin-block-start: var(--space-l);
 	}
 
@@ -149,11 +149,6 @@
 	> :is(h1, h2, h3, h4, h5, h6) + *,
 	> :is(h1, h2, h3, h4, h5, h6) + :is(h2, h3, h4, h5, h6) {
 		margin-block-start: var(--space-s);
-	}
-
-	// Full-bleed: spaziatura generosa sopra e sotto
-	> .alignfull {
-		margin-block: var(--space-xl);
 	}
 
 	// Due full-bleed consecutivi: nessun gap doppio
