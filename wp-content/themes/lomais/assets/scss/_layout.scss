@@ -84,7 +84,9 @@
 //   reading  → var(--wp--custom--reading-size)   [definito in theme.json settings.custom]
 
 .wp-block-post-content,
-.is-root-container {
+.is-root-container,
+.post-single__header,
+.wp-block-post-content {
 	display: grid;
 	grid-template-columns:
 		[full-start]
@@ -121,10 +123,14 @@
 	}
 	
 	// Larghezza reading — stile "Reading" registrato via register_block_style
+	// Usa la colonna content ma con max-width: fluido fino a --grid-reading,
+	// poi si ferma e si centra. Nessun "passo" fisso nella grid.
 	> .is-style-reading-width {
 		grid-column: wide-start / wide-end;
 		@media (min-width: 768px) {
-			grid-column: reading-start / reading-end;
+			grid-column: content-start / content-end;
+			max-width: var(--grid-reading);
+			margin-inline: auto;
 		}
 	}
 }
@@ -202,164 +208,55 @@
 .has-text-align-right { text-align: right; }
 .has-text-align-center { text-align: center; }
 
-// ── Hero ─────────────────────────────────────────────────────────────────────
+// SINGLE
 
-.home-hero.wp-block-cover {
-  border-radius: var(--wp--custom--radius--md);
-  margin-inline: 8.0rem;
-
-  .wp-block-cover__inner-container {
-    width: 100%;
-    max-width: var(--wp--style--global--content-size);
-    margin-inline: auto;
-  }
-
-  // Headline hero — responsiva via override --wp--preset--font-size--xl
-  .wp-block-heading {
-    font-family: var(--wp--preset--font-family--display);
-    font-size: var(--wp--preset--font-size--xl);
-    font-weight: 400;
-    color: var(--wp--preset--color--white);
-    line-height: 1.15;
-    max-width: 72.0rem;
-  }
-
-  // Contenitore bottone nel hero
-  .wp-block-buttons {
-    margin-block-start: 4.0rem;
-  }
-}
-
-// ── Feature cards ─────────────────────────────────────────────────────────────
-
-.feature-cards-section {
-  padding-block: 4.0rem;
-  padding-inline: 8.0rem;
-
-  > .wp-block-columns {
-    gap: 2.4rem !important;
-    align-items: stretch;
-  }
-}
-
-.feature-card {
-  border-radius: var(--wp--custom--radius--md);
-  padding: 4.0rem !important;
-  min-height: 367px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .wp-block-heading {
-    font-family: var(--wp--preset--font-family--display);
-    font-size: var(--wp--preset--font-size--lg);
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--wp--preset--color--ink);
-    margin: 0;
-  }
-
-  .wp-block-paragraph {
-    font-size: var(--wp--preset--font-size--base);
-    color: var(--wp--preset--color--ink);
-    margin: 0;
-  }
-}
-
-// ── Notizie section ───────────────────────────────────────────────────────────
-
-.notizie-section {
-  border-radius: var(--wp--custom--radius--md);
-  margin-inline: 8.0rem;
-
-  // Titolo sezione — responsivo via override --wp--preset--font-size--2xl
-  > .wp-block-heading {
-    font-family: var(--wp--preset--font-family--display);
-    font-size: var(--wp--preset--font-size--2xl);
-    font-weight: 500;
-    text-transform: uppercase;
-    color: var(--wp--preset--color--ink);
-    margin-block-end: 0;
-  }
-
-  // Intro + "Leggi tutto"
-  .notizie-intro {
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
-    margin-block-end: 4.0rem;
-
-    .wp-block-paragraph:first-child {
-      font-size: var(--wp--preset--font-size--md);
-    }
-
-    .leggi-tutto {
-      font-family: var(--wp--preset--font-family--display);
-      font-size: var(--wp--preset--font-size--sm);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      text-align: center;
-      color: var(--wp--preset--color--ink);
-      text-decoration: none;
-
-      a {
-        color: inherit;
-        text-decoration: none;
-
-        &:hover {
-          color: var(--wp--preset--color--primary);
-        }
-      }
-    }
-  }
-}
-
-// ── PSR / Istituzionale ───────────────────────────────────────────────────────
-
-.psr-section {
-  padding-block: 8.0rem;
-
-  .wp-block-image {
-    margin: 0;
-
-    img {
-      mix-blend-mode: darken;
-      width: 100%;
-      height: auto;
-    }
-  }
-
-  .psr-caption {
-    font-size: var(--wp--preset--font-size--xs);
-    color: var(--wp--preset--color--ink);
-    line-height: 1.5;
-    margin-block-start: 2.4rem;
-
-    a {
-      color: inherit;
-      text-decoration: underline;
-    }
-  }
-}
-
-// ── Responsive ───────────────────────────────────────────────────────────────
-// I font-size non vanno overridati qui: --wp--preset--font-size--* sono già
-// responsivi via il :root in _typography.scss
-
-@media (max-width: 768px) {
-  .home-hero.wp-block-cover {
-    margin-inline: 2.4rem;
-  }
-
-  .feature-cards-section {
-    padding-inline: 2.4rem;
-
-    > .wp-block-columns {
-      flex-direction: column;
-    }
-  }
-
-  .notizie-section {
-    margin-inline: 2.4rem;
-  }
+.site-main--single {
+	.post-single__header {
+		padding-inline: var(--site-padding);
+		display: flex;
+		flex-direction: column;
+		align-items: start;
+		gap: var(--space-s);
+		max-width: var(--wp--style--global--content-size);
+		margin-inline: auto;
+		font-family: var(--wp--preset--font-family--display);
+		padding-top: var(--space-xl);
+		padding-bottom: var(--space-l);
+		.post-single__meta {
+			margin: 0;
+			font-size: var(--wp--preset--font-size--xs);
+			font-weight: 500;
+			text-transform: uppercase;
+			gap: 0;
+			> * + * {
+				&::before {
+					content: "|";
+					padding-inline: 0.8rem;
+					display: inline-block;
+				}
+			}
+			a {
+				text-decoration: none;
+				pointer-events: none;
+			}
+		}
+		.wp-block-post-title {
+			color: var(--wp--preset--color--primary);
+			margin: 0;
+		}
+		.wp-block-post-excerpt {
+			margin: 0;
+			font-size: var(--wp--preset--font-size--md);
+			font-weight: 500;
+			max-width: var(--grid-reading);
+		}
+	}
+	.wp-block-post-content {
+		> * {
+			grid-column: wide-start / wide-end;
+			@media (min-width: 768px) {
+				grid-column: reading-start / reading-end;
+			}
+		} 
+	}
 }
