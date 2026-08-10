@@ -88,22 +88,97 @@
 .post-single__header,
 .wp-block-post-content {
 	display: grid;
+
+	// Grid a step. L'algoritmo nativo di CSS Grid (Maximize Tracks) distribuisce lo
+	// spazio libero in parti UGUALI tra tutte le track minmax(0,X) della riga, quindi
+	// satura prima quelle con max più piccolo (i gutter, 80px/280px) molto prima che
+	// "reading" (720px) si avvicini al proprio — l'opposto della gerarchia che vogliamo
+	// (reading pieno → poi gutter content↔reading → poi gutter wide↔content).
+	// Per ottenere quest'ordine servono soglie esplicite invece di un'unica riga fluida.
+	// Soglie = grid-*-size + 2 × site-padding desktop (8rem = 80px):
+	//   720 + 160 = 880px, 1280 + 160 = 1440px, 1440 + 160 = 1600px.
+	// Se questi valori cambiano in theme.json vanno ricalcolate anche qui.
 	grid-template-columns:
 		[full-start]
 		minmax(var(--site-padding), 1fr)
 		[wide-start]
-		minmax(0px, calc((var(--grid-wide) - var(--grid-content)) / 2))
+		0px
 		[content-start]
-		minmax(0px, calc((var(--grid-content) - var(--grid-reading)) / 2))
+		0px
 		[reading-start]
 		minmax(0px, var(--grid-reading))
 		[reading-end]
-		minmax(0px, calc((var(--grid-content) - var(--grid-reading)) / 2))
+		0px
 		[content-end]
-		minmax(0px, calc((var(--grid-wide) - var(--grid-content)) / 2))
+		0px
 		[wide-end]
 		minmax(var(--site-padding), 1fr)
 		[full-end];
+
+	// Step 1 — reading ha raggiunto il suo max (720px): il gutter content↔reading
+	// inizia a crescere.
+	@media (min-width: 880px) {
+		grid-template-columns:
+			[full-start]
+			minmax(var(--site-padding), 1fr)
+			[wide-start]
+			0px
+			[content-start]
+			minmax(0px, calc((var(--grid-content) - var(--grid-reading)) / 2))
+			[reading-start]
+			var(--grid-reading)
+			[reading-end]
+			minmax(0px, calc((var(--grid-content) - var(--grid-reading)) / 2))
+			[content-end]
+			0px
+			[wide-end]
+			minmax(var(--site-padding), 1fr)
+			[full-end];
+	}
+
+	// Step 2 — content ha raggiunto il suo max (1280px): il gutter wide↔content
+	// inizia a crescere.
+	@media (min-width: 1440px) {
+		grid-template-columns:
+			[full-start]
+			minmax(var(--site-padding), 1fr)
+			[wide-start]
+			minmax(0px, calc((var(--grid-wide) - var(--grid-content)) / 2))
+			[content-start]
+			calc((var(--grid-content) - var(--grid-reading)) / 2)
+			[reading-start]
+			var(--grid-reading)
+			[reading-end]
+			calc((var(--grid-content) - var(--grid-reading)) / 2)
+			[content-end]
+			minmax(0px, calc((var(--grid-wide) - var(--grid-content)) / 2))
+			[wide-end]
+			minmax(var(--site-padding), 1fr)
+			[full-end];
+	}
+
+	// Step 3 — wide ha raggiunto il suo max (1440px): da qui in poi lo spazio in
+	// eccesso viene assorbito solo dal padding esterno (già gestito nativamente
+	// dalle track 1fr, che si espandono solo dopo che tutte le track non flessibili
+	// hanno raggiunto il proprio tetto).
+	@media (min-width: 1600px) {
+		grid-template-columns:
+			[full-start]
+			minmax(var(--site-padding), 1fr)
+			[wide-start]
+			calc((var(--grid-wide) - var(--grid-content)) / 2)
+			[content-start]
+			calc((var(--grid-content) - var(--grid-reading)) / 2)
+			[reading-start]
+			var(--grid-reading)
+			[reading-end]
+			calc((var(--grid-content) - var(--grid-reading)) / 2)
+			[content-end]
+			calc((var(--grid-wide) - var(--grid-content)) / 2)
+			[wide-end]
+			minmax(var(--site-padding), 1fr)
+			[full-end];
+	}
 
 	// Default: larghezza content
 	> * {
@@ -128,9 +203,7 @@
 	> .is-style-reading-width {
 		grid-column: wide-start / wide-end;
 		@media (min-width: 768px) {
-			grid-column: content-start / content-end;
-			max-width: var(--grid-reading);
-			margin-inline: auto;
+			grid-column: reading-start / reading-end;
 		}
 	}
 }
