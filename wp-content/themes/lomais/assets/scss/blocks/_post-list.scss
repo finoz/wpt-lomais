@@ -15,24 +15,6 @@
 		padding-block: 2.4rem;
 		max-width: var(--wp--style--global--wide-size);
 		margin-inline: auto;
-		.archive-header {
-			margin-block-end: var(--space-l);
-			width: 100%;
-			&-title {
-				font-family: var(--wp--preset--font-family--display);
-				font-size: var(--wp--preset--font-size--xl);
-				font-weight: 700;
-				margin: 0 0 var(--space-s);
-				text-transform: uppercase;
-				color: var(--wp--preset--color--primary);
-			}
-			&-intro {
-				font-size: var(--wp--preset--font-size--base);
-				color: var(--wp--preset--color--ink-light);
-				margin: 0;
-				max-width: var(--wp--custom--reading-size)
-			}
-		}
 	}
 }
 
