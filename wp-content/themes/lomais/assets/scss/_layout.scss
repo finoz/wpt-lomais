@@ -317,6 +317,7 @@
 	&.archive-header {
 		padding-inline: 0;
 		width: 100%;
+		max-width: calc(var(--wp--style--global--content-size) - 2 * var(--site-padding));
 	}
 	.entry-header__meta {
 		margin: 0;
