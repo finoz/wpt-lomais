@@ -75,6 +75,18 @@
 	flex: 1; // cresce per spingere il footer in fondo
 }
 
+// elementi con bg colorato
+
+[class*="wp-block"] {
+	&.has-background {
+		padding: 3.2rem;
+		border-radius: var(--wp--custom--radius--md);
+		&.alignfull {
+			border-radius: 0;
+		}
+	}
+}
+
 // ── Grid contenuto ──────────────────────────────────────────────────────────
 // Applicato a wp:post-content (div.wp-block-post-content).
 // 4 livelli di larghezza, simmetrici:

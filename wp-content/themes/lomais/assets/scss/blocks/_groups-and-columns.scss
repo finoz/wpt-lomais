@@ -1,14 +1,3 @@
-.wp-block-group,
-.wp-block-column {
-	&.has-background {
-		padding: 3.2rem;
-		border-radius: var(--wp--custom--radius--md);
-		&.alignfull {
-			border-radius: 0;
-		}
-	}
-}
-
 .wp-block-columns {
 	@media (min-width: 769px) {
 		// Default: colonne uguali — crescono equamente dallo 0
