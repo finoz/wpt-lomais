@@ -343,11 +343,23 @@
 		max-width: var(--grid-reading);
 	}
 }
+// Blocchi di testo: reading-width di default nel post content.
+// Tutto il resto resta a content-width (default del selettore combinato sopra).
+// .is-style-reading-width disponibile per applicazione manuale su altri blocchi.
+// .alignwide e .alignfull sovrascrivono normalmente.
 .wp-block-post-content {
-	> * {
+	> :is(
+		.wp-block-paragraph,
+		.wp-block-heading,
+		.wp-block-list,
+		.wp-block-quote,
+		.wp-block-verse,
+		.wp-block-preformatted,
+		.wp-block-code
+	) {
 		grid-column: wide-start / wide-end;
 		@media (min-width: 768px) {
 			grid-column: reading-start / reading-end;
 		}
-	} 
+	}
 }
