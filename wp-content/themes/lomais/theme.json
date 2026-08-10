@@ -23,8 +23,7 @@
         "sm":   "0.8rem",
         "md":   "1.6rem",
         "full": "8.0rem"
-      },
-      "transition": "150ms ease"
+      }
     },
 
     "color": {

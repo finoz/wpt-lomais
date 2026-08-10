@@ -1,39 +1,81 @@
 // Paginazione — prev / next
-// Usata nel Query Loop degli archivi (wp:query-pagination).
+// Usata nel Query Loop degli archivi (wp:query-pagination) e nella paginazione dei single.
+// è un po' un pasticcio perché il markup è diverso nei due contesti, ma la struttura è simile e condividono lo stesso CSS.
 
-.posts-pagination,
+// fix per la paginazione dei singoli post (markup differente per gestire la max-width ed il site padding)
+.posts-navigation__wrapper {
+	padding-inline: var(--site-padding);
+	display: flex;
+	justify-content: center;
+	> * {
+		flex: 1 1 0%;
+	}
+}
+
+.posts-navigation,
 .wp-block-query-pagination {
+	position: relative;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	margin-block-start: var(--space-l);
-	gap: var(--space-m);
-
+	justify-content: center;
+	gap: 0;
+	margin-top: var(--space-l);
+	padding-block: var(--space-m);
+	&::after {
+		pointer-events: none;
+		content: "";
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		background-color: var(--wp--preset--color--primary);
+		top: 0;
+	}
+	@media (min-width: 769px) {
+		&::after {
+			height: 4px;
+		}
+	}
+	&:has(.wp-block-query-pagination-previous):has(.wp-block-query-pagination-next),
+	&:has(.post-navigation-link-previous a):has(.post-navigation-link-next a) {
+		&::before {
+			pointer-events: none;
+			content: "|";
+			padding-inline: var(--space-m);
+			order: 2;
+		}
+	}
+	[class*="previous"] {
+		order: 1;
+	}
+	[class*="next"] {
+		order: 3;
+	}
 	// link prev e next condividono la stessa struttura
-	.wp-block-query-pagination-previous,
-	.wp-block-query-pagination-next {
-		a {
-			display: inline-flex;
-			align-items: center;
-			gap: 0.6em;
-			font-family: var(--wp--preset--font-family--display);
-			font-size: var(--wp--preset--font-size--sm);
-			font-weight: 500;
-			text-transform: uppercase;
-			letter-spacing: 0.06em;
-			color: var(--wp--preset--color--ink);
-			text-decoration: none;
-			transition: color var(--wp--custom--transition);
-
-			&:hover {
-				color: var(--wp--preset--color--primary);
-			}
+	a[class*="wp-block-query-pagination"],
+	.wp-block-post-navigation-link a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.6em;
+		font-family: var(--font-family--display);
+		font-size: var(--wp--preset--font-size--sm);
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		text-decoration: none;
+		transition: color 150ms ease;
+		&::before {
+			content: "←";
+		}
+		&:hover {
+			color: var(--wp--preset--color--primary);
 		}
 	}
 
-	// se manca una delle due (prima/ultima pagina) il rimanente va a destra
-	.wp-block-query-pagination-previous:only-child,
-	.wp-block-query-pagination-next:only-child {
-		margin-inline-start: auto;
+	a.wp-block-query-pagination-next,
+	.post-navigation-link-next a {
+		&::before {
+			content: "→";
+			order: 2;
+		}
 	}
 }
