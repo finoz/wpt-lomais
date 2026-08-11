@@ -6,6 +6,10 @@
 		border-radius: 0;
 	}
 
+	&__inner-container {
+		gap: var(--space-s);
+	}
+
 	// ── Allineamento verticale — stili registrati in ficus/inc/block-styles.php
 	// Il contenuto vive dentro .wp-block-cover__inner-container, che va reso
 	// flex column per rispondere a justify-content.
