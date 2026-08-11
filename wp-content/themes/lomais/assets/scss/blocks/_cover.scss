@@ -1,7 +1,30 @@
 .wp-block-cover {
 	padding: var(--space-m);
 	border-radius: var(--wp--custom--radius--md);
+
 	&.alignfull {
 		border-radius: 0;
+	}
+
+	// ── Allineamento verticale — stili registrati in ficus/inc/block-styles.php
+	// Il contenuto vive dentro .wp-block-cover__inner-container, che va reso
+	// flex column per rispondere a justify-content.
+
+	&.is-style-valign-top,
+	&.is-style-valign-space-between {
+		.wp-block-cover__inner-container {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			width: 100%;
+		}
+	}
+
+	&.is-style-valign-top .wp-block-cover__inner-container {
+		justify-content: flex-start;
+	}
+
+	&.is-style-valign-space-between .wp-block-cover__inner-container {
+		justify-content: space-between;
 	}
 }
