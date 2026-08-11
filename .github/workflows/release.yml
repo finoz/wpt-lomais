@@ -1,0 +1,47 @@
+name: Build & Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: wp-content/themes/lomais/package-lock.json
+
+      - name: Install dependencies
+        working-directory: wp-content/themes/lomais
+        run: npm ci
+
+      - name: Build assets
+        working-directory: wp-content/themes/lomais
+        run: npm run build
+
+      - name: Create theme zip
+        working-directory: wp-content/themes
+        run: |
+          zip -r lomais.zip lomais \
+            --exclude "lomais/node_modules/*" \
+            --exclude "lomais/assets/scss/*" \
+            --exclude "lomais/assets/ts/*" \
+            --exclude "lomais/package.json" \
+            --exclude "lomais/package-lock.json" \
+            --exclude "lomais/vite.config.*" \
+            --exclude "lomais/tsconfig*"
+
+      - name: Create release and attach zip
+        uses: softprops/action-gh-release@v2
+        with:
+          files: wp-content/themes/lomais.zip
+          generate_release_notes: true
