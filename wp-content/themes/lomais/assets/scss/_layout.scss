@@ -12,10 +12,9 @@
 	--z-tooltip:    6;  // tooltip
 
 	// Padding laterale layout — usato da header e grid contenuto
-	--site-padding: 8.0rem;
-
-	@media (max-width: 768px) {
-		--site-padding: 2.4rem;
+	--site-padding: 2.4rem;
+	@media (min-width: 768px) {
+		--site-padding: 8.0rem;
 	}
 
 	// Alias variabili grid con fallback hardcoded
