@@ -27,6 +27,8 @@ npm install   # solo la prima volta
 npm run dev
 ```
 
+N.B. Per modificare le porte locali -nell'evenienza di far girare più progetti in parallelo- va creato e modificato il file .env (da .env.example).
+
 ## Build produzione
 
 ```bash
