@@ -277,6 +277,26 @@
 	margin-inline: auto; // centratura default
 }
 
+// Giustificazione del contenuto (classi generate da WP sui blocchi flex: buttons, group, social links...)
+// Il CSS di wp-block-library è dequeued, quindi le gestiamo noi.
+// Orizzontale: justify-content. Verticale (.is-vertical): l'asse si inverte, quindi align-items.
+.is-layout-flex {
+	&.is-content-justification-center {
+		justify-content: center;
+		&.is-vertical {
+			justify-content: normal;
+			align-items: center;
+		}
+	}
+	&.is-content-justification-right {
+		justify-content: flex-end;
+		&.is-vertical {
+			justify-content: normal;
+			align-items: flex-end;
+		}
+	}
+}
+
 // grid: usato dal query block (post-template)
 .is-layout-grid {
   display: grid;
