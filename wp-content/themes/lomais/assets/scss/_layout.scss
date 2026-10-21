@@ -221,6 +221,7 @@
 	// Usa la colonna content ma con max-width: fluido fino a --grid-reading,
 	// poi si ferma e si centra. Nessun "passo" fisso nella grid.
 	> .is-style-reading-width {
+		width: 100%;
 		grid-column: wide-start / wide-end;
 		@media (min-width: 768px) {
 			grid-column: reading-start / reading-end;
