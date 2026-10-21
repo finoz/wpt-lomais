@@ -37,31 +37,16 @@
 		}
 	}
 
-	// CTA download: piccola, maiuscola come la label di un campo form, grigio discreto
 	.wp-block-file__button {
-		flex: 0 0 auto;
-		margin: 0;
-		padding: 0.6rem 1.2rem;
-		font-family: var(--wp--preset--font-family--display);
 		font-size: var(--wp--preset--font-size--xs);
-		font-weight: 600;
-		line-height: 1;
 		letter-spacing: 0.08em;
 		text-transform: uppercase;
 		color: var(--wp--preset--color--ink);
-		background-color: var(--wp--preset--color--surface-alt);
-		border: 0;
-		border-radius: var(--wp--custom--radius--sm);
 		text-decoration: underline;
-		text-decoration-thickness: 1px;
 		text-underline-offset: 0.3em;
-		transition:
-			color var(--wp--custom--transition, 200ms ease),
-			background-color var(--wp--custom--transition, 200ms ease);
-
+		transition: all 200ms ease;
 		&:hover {
-			color: var(--wp--preset--color--white);
-			background-color: var(--wp--preset--color--ink-light);
+			text-underline-offset: 0.1em;
 		}
 	}
 }
