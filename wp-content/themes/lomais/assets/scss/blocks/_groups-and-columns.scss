@@ -27,6 +27,26 @@
 }
 
 
+// ── Allineamento verticale colonne ───────────────────────────────────────────
+// Classi generate da WP: .are-vertically-aligned-* sul contenitore (vale per tutte
+// le colonne), .is-vertically-aligned-* sulla singola colonna (prevale sul contenitore).
+// Il CSS di wp-block-library è dequeued, quindi le gestiamo noi.
+// Default del tema: stretch (colonne alla stessa altezza).
+.wp-block-columns {
+	&.are-vertically-aligned-top     { align-items: flex-start; }
+	&.are-vertically-aligned-center  { align-items: center; }
+	&.are-vertically-aligned-bottom  { align-items: flex-end; }
+	&.are-vertically-aligned-stretch { align-items: stretch; }
+}
+
+.wp-block-column {
+	&.is-vertically-aligned-top     { align-self: flex-start; }
+	&.is-vertically-aligned-center  { align-self: center; }
+	&.is-vertically-aligned-bottom  { align-self: flex-end; }
+	&.is-vertically-aligned-stretch { align-self: stretch; }
+}
+
+
 // Group block — varianti registrate in ficus/inc/block-styles.php
 // Card generica (usata nella sezione feature)
 .wp-block-group.is-style-card {
